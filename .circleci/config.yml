@@ -30,7 +30,7 @@ jobs:
       - checkout
       - aws-cli/install
       - aws-oidc-setup:
-          aws-role-arn: "arn:aws:iam::XXXXXXXXXXXX:role/circleci"
+          aws-role-arn: "arn:aws:iam::206576627575:role/circleci"
       - run:
           name: Test AWS connection
           command: aws s3 ls
