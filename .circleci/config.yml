@@ -6,6 +6,17 @@ base_image: &base_image
 
 working_directory: &working_directory
   ~/example
+
+default_config: &default_config
+  docker:
+    - image: *base_image
+  working_directory: *working_directory
+  environment:
+    BASH_ENV: /tmp/.bashrc
+
+repo_cache_key: &repo_cache_key
+  v1-repo-{{ .Branch }}-{{ .Revision }}
+
   
 orbs:
   aws-cli: circleci/aws-cli@3.0.0
