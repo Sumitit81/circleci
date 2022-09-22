@@ -1,5 +1,12 @@
 version: 2.1
+references:
 
+base_image: &base_image
+  hashicorp/terraform:0.12.31
+
+working_directory: &working_directory
+  ~/example
+  
 orbs:
   aws-cli: circleci/aws-cli@3.0.0
 
