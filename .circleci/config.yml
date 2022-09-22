@@ -35,7 +35,6 @@ jobs:
           name: Test AWS connection
           command: aws s3 ls
 
-
 workflows:
   build_and_deploy:
     jobs:
