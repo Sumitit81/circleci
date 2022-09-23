@@ -48,6 +48,9 @@ commands:
       - run:
           name: Verify AWS credentials
           command: aws sts get-caller-identity
+      - run:
+          name: Print Bash
+          command: echo ${BASH_ENV}
 
 jobs:
 
