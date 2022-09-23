@@ -59,6 +59,13 @@ commands:
           name: Print Bash
           command: echo ${BASH_ENV}
 
+terraform_init: &terraform_init
+  run:
+    name: terraform init
+    command: |
+      source $BASH_ENV
+      terraform init
+
 jobs:
 
   test:
