@@ -125,3 +125,4 @@ workflows:
       - test:
           context:
             - my-context
+      - build
