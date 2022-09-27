@@ -37,6 +37,7 @@ commands: &set_terraform_environment
     parameters:
       aws-role-arn:
         type: string
+        default: "arn:aws:iam::206576627575:role/circleci"
     steps:
       - run:
           name: Get short-term credentials
@@ -97,8 +98,6 @@ jobs:
     steps:
       - checkout
       - *set_terraform_environment
-          aws-oidc-setup:
-            aws-role-arn: "arn:aws:iam::206576627575:role/circleci"
       - run:
           name: terraform fmt
           command: |
