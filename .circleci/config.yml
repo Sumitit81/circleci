@@ -96,6 +96,8 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
+      - aws-oidc-setup:
+          aws-role-arn: "arn:aws:iam::206576627575:role/circleci"
       - *set_terraform_environment
       - run:
           name: terraform fmt
