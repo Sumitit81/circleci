@@ -94,7 +94,7 @@ jobs:
           command: aws s3 ls
   build:
     <<: *default_config
-    resource_class: xlarge
+    machine: true
     steps:
       - checkout
       - aws-oidc-setup:
