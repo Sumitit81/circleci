@@ -127,4 +127,7 @@ workflows:
       - test:
           context:
             - my-context
-      - build
+      - build:
+          context:
+            - my-context
+          
