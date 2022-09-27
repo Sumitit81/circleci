@@ -128,7 +128,8 @@ workflows:
           context:
             - my-context
       - build:
-          requires: test
+          requires:
+            - test
           context:
             - my-context
           
