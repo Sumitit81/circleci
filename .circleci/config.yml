@@ -94,7 +94,7 @@ jobs:
           command: aws s3 ls
   build:
     <<: *default_config
-    machine: true
+    machine: docker
     steps:
       - checkout
       - aws-oidc-setup:
