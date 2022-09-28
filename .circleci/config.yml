@@ -43,7 +43,7 @@ commands: &set_terraform_environment
           name: Get short-term credentials
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; then
-              bash && cd /home/circleci && mkdir .aws && cd .aws && touch crendentials && touch $BASH_ENV
+              cd /home/circleci && mkdir .aws && cd .aws && touch crendentials && touch $BASH_ENV
               STS=($(aws sts assume-role-with-web-identity --role-arn << parameters.aws-role-arn >> --role-session-name "${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM}" --web-identity-token "${CIRCLE_OIDC_TOKEN}" --duration-seconds 900 --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text))
               echo -e "[default]\naws_access_key_id=${STS[0]}\naws_secret_access_key=${STS[1]}\n" > /home/circleci/.aws/credentials
               echo 'aws configure --profile terraform-sre-aws list'
@@ -128,6 +128,8 @@ workflows:
           context:
             - my-context
       - build:
+          requires:
+            - test
           context:
             - my-context
           
