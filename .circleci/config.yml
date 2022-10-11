@@ -41,6 +41,7 @@ commands: &set_terraform_environment
     steps:
       - run:
           name: Get short-term credentials
+          shell: /bin/bash
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; 
             then
