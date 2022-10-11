@@ -2,7 +2,7 @@ version: 2.1
 references:
 
 base_image: &base_image
-  hashicorp/terraform:0.12.31
+  shivanim13/terraform_veerum:latest
 
 working_directory: &working_directory
   ~/example
