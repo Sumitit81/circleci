@@ -41,10 +41,7 @@ commands: &set_terraform_environment
     steps:
       - run:
           name: Get short-term credentials
-          shell: /bin/bash
           command: |
-            if [ "$CIRCLE_BRANCH" == "main" ]; 
-            then
               cd /home/circleci && mkdir .aws && cd .aws && touch crendentials && touch $BASH_ENV
               STS=($(aws sts assume-role-with-web-identity --role-arn << parameters.aws-role-arn >> --role-session-name "${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM}" --web-identity-token "${CIRCLE_OIDC_TOKEN}" --duration-seconds 900 --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text))
               echo -e "[default]\naws_access_key_id=${STS[0]}\naws_secret_access_key=${STS[1]}\n" > /home/circleci/.aws/credentials
@@ -54,7 +51,7 @@ commands: &set_terraform_environment
               echo "export AWS_ACCESS_KEY_ID=${STS[0]}" >> $BASH_ENV
               echo "export AWS_SECRET_ACCESS_KEY=${STS[1]}" >> $BASH_ENV
               echo "export AWS_SESSION_TOKEN=${STS[2]}" >> $BASH_ENV
-            fi
+
       - run:
           name: Verify AWS credentials
           command: aws sts get-caller-identity
