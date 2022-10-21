@@ -13,7 +13,7 @@ executors:
   sre_config: &sre_config
     docker:
       - image: *base_image
-    resource_class: xlarge
+    resource_class: docker
     working_directory: *working_directory
     environment:
       BASH_ENV: /tmp/.bashrc
@@ -21,7 +21,7 @@ executors:
   dev_config: &dev_config
     docker:
       - image: *base_image
-    resource_class: xlarge
+    resource_class: docker
     working_directory: *working_directory
     environment:
       BASH_ENV: /tmp/.bashrc
