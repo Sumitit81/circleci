@@ -109,6 +109,8 @@ commands: &set_terraform_environment
                       echo "Assume role with web identity succeeded"
                       echo "export TERRAFORM_ENVIRONMENT=terraform-dev-aws" >> $BASH_ENV
                       fi
+                      echo ${AWS_ACCESS_KEY_ID}
+                      cat $BASH_ENV
                   ;;
 
               esac
